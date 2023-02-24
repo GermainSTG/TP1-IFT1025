@@ -9,11 +9,13 @@ public class GuildCommandSystem {
     }
 
     public boolean hasNextCommand() {
-        return index<command.length;
+        return index<(command.length-1);
     }
 
     public GuildCommand nextCommand() {
-        index++;
-        return new GuildCommand(command[index--]);
+        return new GuildCommand(command[++index]);
+    }
+    public GuildCommand actualCommand() {
+        return new GuildCommand(command[index]);
     }
 }

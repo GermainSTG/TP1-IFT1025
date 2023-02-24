@@ -15,7 +15,7 @@ public class Main {
     public static void main(String[] args) {
         GuildCommandSystem guildCommandSystem = new GuildCommandSystem(args);
 
-        Guilde maGuilde = makeGuilde(guildCommandSystem.nextCommand());
+        Guilde maGuilde = makeGuilde(guildCommandSystem.actualCommand());
 
         while (guildCommandSystem.hasNextCommand()) {
             GuildCommand command = guildCommandSystem.nextCommand();
@@ -38,7 +38,7 @@ public class Main {
 
 
     public static Guilde makeGuilde(GuildCommand command) {
-        int montantInitial = command.nextInt();
+        double montantInitial = command.nextDouble();
         int nbArmures = command.nextInt();
         return new Guilde(montantInitial, nbArmures);
     }
