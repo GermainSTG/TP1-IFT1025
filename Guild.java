@@ -2,6 +2,7 @@ import Math;
 public class Guild {
     private Hero[] heroes;  // à modifier si nécessaire, juste en attendant
     private String[] errors;  // idem, utiliser Arrays?
+    private Bank bank;
     public Guild(initialMoney, initialArmor) {
 
     }
@@ -12,7 +13,7 @@ public class Guild {
 
     public void trainHero(String name) {
         for (Hero hero : heroes) {
-            if (hero.getName().equals(name)) {
+            if (hero.getName().equals(name)) {  // trouve le héros à upgrade
                 double c = Math.log(hero.getLevel() + 10);  // une constante reveant dans les calculs de prix
                 double moneyCost = 20 * c;
                 double armorCost = Math.roof(c);
@@ -24,7 +25,7 @@ public class Guild {
                     String error = "-Il vous manque de l'argent et/ou des armures pour améliorer" + name +"\n";
                     // TODO: ajouter error à errors
                 }
-                break;
+                return;  // non vu que void, à modifier
             }
         }
         String error = "-Le héros au nom de" + name + "n'apparêt pas dans la liste\n";
