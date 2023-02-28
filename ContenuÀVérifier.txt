@@ -1,0 +1,2 @@
+- commentaires avant chaque fonction/procédure?
+- loseHPFromQuest(HPLoss, levelQuest) --> HPLoss bon nom?
