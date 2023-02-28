@@ -3,3 +3,4 @@
 - loseHPFromQuest(HPLoss, levelQuest) --> HPLoss bon nom?
 - HP dans paramètres en majuscule? ou hitPoints mieux?
 - longueur des lignes?
+- Int et Double en majuscule dans main?
