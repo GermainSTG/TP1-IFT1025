@@ -48,20 +48,11 @@ public class Guild {
                     String error = "-Il vous manque de l'argent et/ou des armures pour améliorer" + name +"\n";
                     // TODO: ajouter error à errors
                 }
-                return;  // non vu que void, à modifier
+                return;  // non vu que void?, à modifier pour que arrête là
             }
         }
         String error = "-Le héros au nom de" + name + "n'apparêt pas dans la liste\n";
         // TODO: ajouter error à errors
 
-    }
-
-    private boolean heroExist(String name) {
-        for (Hero hero : heroes) {
-            if (hero.getName().equals(name)) {
-                return true;
-            }
-        }
-        return false;
     }
 }
