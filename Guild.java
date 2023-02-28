@@ -10,19 +10,22 @@ public class Guild {
     public void buyHero(String name, int level, double moneyCost, int armorCost, double hitPoints) {
         if (moneyCost >= bank.getMoney() and armorCost >= bank.getArmor()) {
             Hero newHero;
-            if (level == 0) {
-                newHero = new Common(name, hitPoints);
-            } else if (level == 1) {
-                newHero = new Uncommon(name, hitPoints);
-            } else if(level == 2) {
-                newHero = new Rare(name, hitPoints);
-            } else if (level == 3) {
-                newHero = new Epic(name, hitPoints);
-            } else if (level == 4) {
-                newHero = new Legendary(name, hitPoints);
-            } else {
-                String error = "-Ce type de Héros n'existe pas"
-                // TODO: ajouter error à errors
+            switch (level) {
+                case 0 -> {
+                    newHero = new Common(name, hitPoints);
+                }
+                case 1 -> {
+                    newHero = new Uncommon(name, hitPoints);
+                }
+                case 2 -> {
+                    newHero = new Rare(name, hitPoints);
+                }
+                case 3 -> {
+                    newHero = new Epic(name, hitPoints);
+                }
+                case 4 -> {
+                    newHero = new Legendary(name, hitPoints);
+                }
             }
             // TODO: ajouter newHero à heroes
         } else {
