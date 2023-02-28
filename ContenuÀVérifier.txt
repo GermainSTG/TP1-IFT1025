@@ -1,4 +1,5 @@
 - commentaires avant chaque fonction/procédure?
+    -> De ce dont je me souviens il avait dis que ce n'étais pas essentiel: seulement si la fonction est "complexe'...
 - loseHPFromQuest(HPLoss, levelQuest) --> HPLoss bon nom?
 - HP dans paramètres en majuscule? ou hitPoints mieux?
 - longueur des lignes?

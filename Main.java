@@ -1,7 +1,9 @@
 package ca.udem.ift1025.tp1.corrige;
 
-import ca.udem.ift1025.tp1.corrige.guildcommands.GuildCommand;
-import ca.udem.ift1025.tp1.corrige.guildcommands.GuildCommandSystem;
+//import ca.udem.ift1025.tp1.corrige.guildcommands.GuildCommand;
+//import ca.udem.ift1025.tp1.corrige.guildcommands.GuildCommandSystem;
+
+package guildcommands.GuildCommand;package guildcommands.GuildCommandSystem;
 
 public class Main {
     /**
@@ -21,7 +23,12 @@ public class Main {
             GuildCommand command = guildCommandSystem.nextCommand();
             switch (command.getName()) {
                 case "buy-hero" -> {
-                    // TODO
+                    String name = command.nextString();
+                    Int level = command.nextInt();
+                    Double moneyCost = command.nextDouble();
+                    Int armorCost = command.nextInt();
+                    Double hp = command.nextInt();
+                    maGuilde.buyHero(name, level, moneyCost, armorCost, hp);
                 }
                 case "buy-armor" ->{
                     // TODO
@@ -40,6 +47,6 @@ public class Main {
     public static Guilde makeGuilde(GuildCommand command) {
         double montantInitial = command.nextDouble();
         int nbArmures = command.nextInt();
-        return new Guilde(montantInitial, nbArmures);
+        return new Guild(montantInitial, nbArmures);
     }
 }
