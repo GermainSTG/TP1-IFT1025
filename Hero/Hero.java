@@ -3,8 +3,9 @@ public abstract class Hero {
     protected int level;
     protected double hitPoints, maxHP;
 
-    public Hero(String name) {
+    public Hero(String name, double hitPoints) {
         this.name = name;
+        this.hitPoints = hitPoints;
     }
 
     public void upgrade() {
