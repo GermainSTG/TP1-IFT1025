@@ -1,4 +1,6 @@
 import Math;
+package TP1-IFT1025.Hero;
+
 public class Guild {
     private Hero[] heroes;  // à modifier si nécessaire, juste en attendant
     private String[] errors;  // idem, utiliser Arrays?
