@@ -13,11 +13,13 @@ public class Guild {
     public void trainHero(String name) {
         for (Hero hero : heroes) {
             if (hero.getName().equals(name)) {
-                double c = Math.log(hero.getLevel() + 10);
+                double c = Math.log(hero.getLevel() + 10);  // une constante reveant dans les calculs de prix
                 double moneyCost = 20 * c;
                 double armorCost = Math.roof(c);
-                if (moneyCost > and armorCost > ) {
-                    hero.upgrade()
+                if ((moneyCost >= bank.getMoney()) and (armorCost > bank.getArmor())) {
+                    bank.loseMoney(moneyCost);
+                    bank.loseArmor(armorCost);
+                    hero.upgrade();
                 } else {
                     String error = "-Il vous manque de l'argent et/ou des armures pour améliorer" + name +"\n";
                     // TODO: ajouter error à errors
