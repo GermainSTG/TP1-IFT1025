@@ -1,3 +1,4 @@
+import Math;
 public class Guild {
     private Hero[] heroes;  // à modifier si nécessaire, juste en attendant
     private String[] errors;  // idem, utiliser Arrays?
@@ -10,10 +11,23 @@ public class Guild {
     }
 
     public void trainHero(String name) {
-        if (!heroExist(name)) {
-            String error = "-Le héros au nom de" + name + "n'apparêt pas dans la liste\n";
-            // TODO: ajouter error à errors
+        for (Hero hero : heroes) {
+            if (hero.getName().equals(name)) {
+                double c = Math.log(hero.getLevel() + 10);
+                double moneyCost = 20 * c;
+                double armorCost = Math.roof(c);
+                if (moneyCost > and armorCost > ) {
+                    hero.upgrade()
+                } else {
+                    String error = "-Il vous manque de l'argent et/ou des armures pour améliorer" + name +"\n";
+                    // TODO: ajouter error à errors
+                }
+                break;
+            }
         }
+        String error = "-Le héros au nom de" + name + "n'apparêt pas dans la liste\n";
+        // TODO: ajouter error à errors
+
     }
 
     private boolean heroExist(String name) {
