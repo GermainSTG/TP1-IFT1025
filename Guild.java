@@ -74,7 +74,7 @@ public class Guild {
 
     public void buyArmor(int number, int price) {
 
-        if (bank.getMoney() >= double number * prive) {
+        if (bank.getMoney() >= double number * price) {
             bank.gainArmor(number);
             bank.loseMoney(double number * price);
         } else {
