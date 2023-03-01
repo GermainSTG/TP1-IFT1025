@@ -1,6 +1,4 @@
-import Math;
-package TP1-IFT1025.Hero;
-
+import Hero.*;
 public class Guild {
 
     private Hero[] heroes;  // à modifier si nécessaire, juste en attendant
@@ -12,23 +10,23 @@ public class Guild {
     }
 
     public void buyHero(String name, int level, double moneyCost, int armorCost, double hitPoints) {
-        if (moneyCost >= bank.getMoney() and armorCost >= bank.getArmor()) {
+        if (moneyCost >= bank.getMoney() & armorCost >= bank.getArmor()) {
             Hero newHero;
             switch (level) {
                 case 0 -> {
-                    newHero = new Common(name, hitPoints);
+                    newHero = new CommonHero(name, hitPoints);
                 }
                 case 1 -> {
-                    newHero = new Uncommon(name, hitPoints);
+                    newHero = new UncommonHero(name, hitPoints);
                 }
                 case 2 -> {
-                    newHero = new Rare(name, hitPoints);
+                    newHero = new RareHero(name, hitPoints);
                 }
                 case 3 -> {
-                    newHero = new Epic(name, hitPoints);
+                    newHero = new EpicHero(name, hitPoints);
                 }
                 case 4 -> {
-                    newHero = new Legendary(name, hitPoints);
+                    newHero = new LegendaryHero(name, hitPoints);
                 }
             }
             // TODO: ajouter newHero à heroes
@@ -43,8 +41,8 @@ public class Guild {
             if (hero.getName().equals(name)) {  // trouve le héros à upgrade
                 double c = Math.log(hero.getLevel() + 10);  // une constante reveant dans les calculs de prix
                 double moneyCost = 20 * c;
-                double armorCost = Math.roof(c);
-                if ((moneyCost >= bank.getMoney()) and (armorCost >= bank.getArmor())) {
+                int armorCost = (int) Math.floor(c);
+                if (moneyCost >= bank.getMoney() & armorCost >= bank.getArmor()) {
                     bank.loseMoney(moneyCost);
                     bank.loseArmor(armorCost);
                     hero.upgrade();
@@ -67,7 +65,7 @@ public class Guild {
 
         Quete quest = new Quete(level, hpCost);
 
-        Hero hero = quest.selectHero(heros);
+        Hero hero = quest.selectHero(heroes);
 
         switch (quest.completeQuest(hero)) {
             case true -> {
@@ -87,7 +85,7 @@ public class Guild {
 
     public void buyArmor(int number, int price) {
         this.bank.gainArmor(number);
-        this.bank.loseMoney(double number * price);
+        this.bank.loseMoney((double) number * price);
     }
 
 }

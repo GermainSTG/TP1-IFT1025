@@ -1,3 +1,4 @@
+package Hero;
 public abstract class Hero {
     protected String name;
     protected int level;
