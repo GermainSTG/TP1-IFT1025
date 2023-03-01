@@ -1,4 +1,5 @@
-package ca.udem.ift1025.tp1.corrige.guildcommands;
+//package ca.udem.ift1025.tp1.corrige.guildcommands;
+package guildcommands;
 
 public class GuildCommandSystem {
 

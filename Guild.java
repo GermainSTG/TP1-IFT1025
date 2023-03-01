@@ -13,23 +13,19 @@ public class Guild {
     }
 
     public void buyHero(String name, int level, double moneyCost, int armorCost, double hitPoints) {
-        if (moneyCost >= bank.getMoney() and armorCost >= bank.getArmor()) {
+        if (moneyCost >= bank.getMoney() & armorCost >= bank.getArmor()) {
             Hero newHero;
             switch (level) {
                 case 0 -> {
-                    newHero = new Common(name, hitPoints);
-                }
-                case 1 -> {
-                    newHero = new Uncommon(name, hitPoints);
-                }
-                case 2 -> {
-                    newHero = new Rare(name, hitPoints);
-                }
-                case 3 -> {
-                    newHero = new Epic(name, hitPoints);
-                }
-                case 4 -> {
-                    newHero = new Legendary(name, hitPoints);
+                    newHero = new CommonHero(name, hitPoints);
+                } case 1 -> {
+                    newHero = new UncommonHero(name, hitPoints);
+                } case 2 -> {
+                    newHero = new RareHero(name, hitPoints);
+                } case 3 -> {
+                    newHero = new EpicHero(name, hitPoints);
+                } case 4 -> {
+                    newHero = new LegendaryHero(name, hitPoints);
                 }
             }
             heros.add(newHero);
@@ -41,17 +37,17 @@ public class Guild {
     public void trainHero(String name) {
         for (Hero hero : heroes) {
             if (hero.getName().equals(name)) {  // trouve le héros à upgrade
-                double c = Math.log(hero.getLevel() + 10);  // une constante reveant dans les calculs de prix
+                double c = Math.log(hero.getLevel() + 10);  // une constante revenant dans les calculs de prix
                 double moneyCost = 20 * c;
-                double armorCost = Math.roof(c);
-                if ((moneyCost >= bank.getMoney()) and (armorCost >= bank.getArmor())) {
+                int armorCost = (int) Math.floor(c);
+                if (bank.getMoney() >= moneyCost & bank.getArmor() >= armorCost) {
                     bank.loseMoney(moneyCost);
                     bank.loseArmor(armorCost);
                     hero.upgrade();
                 } else {
                     errors.add("Il vous manque de l'argent et/ou des armures pour améliorer " + name);
                 }
-                return;  // non vu que void?, à modifier pour que arrête là
+                return;
             }
         }
         errors.add("Le héros au nom de " + name + " n'apparêt pas dans la liste");
@@ -62,7 +58,7 @@ public class Guild {
 
         Quete quest = new Quete(level, hpCost);
 
-        Hero hero = quest.selectHero(heros);
+        Hero hero = quest.selectHero(heroes);
 
         switch (quest.completeQuest(hero)) {
             case true -> {
