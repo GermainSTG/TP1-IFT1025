@@ -27,8 +27,8 @@ public class Main {
                     int level = command.nextInt();
                     double moneyCost = command.nextDouble();
                     int armorCost = command.nextInt();
-                    double hp = command.nextInt();
-                    maGuild.buyHero(name, level, moneyCost, armorCost, hp);
+                    double hitPoints = command.nextInt();
+                    maGuild.buyHero(name, level, moneyCost, armorCost, hitPoints);
                 }
                 case "buy-armor" ->{
                     // TODO
@@ -37,7 +37,8 @@ public class Main {
                     // TODO
                 }
                 case "train-hero" -> {
-                    // TODO
+                    String name = command.nextString();
+                    maGuild.trainHero(name);
                 }
             }
         }
