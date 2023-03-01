@@ -86,7 +86,7 @@ public class Guild {
     public void makeSummary() {
         System.out.println("Guild Bank account : " bank.getMoney() + " gold & " + bank.getArmor() + " armors.");
         System.out.println("Hero.s. : ");
-        for (String hero : heros) {
+        for (Hero hero : heros) {
             System.out.println("-" + hero.getName() = ": level=" + hero.getLevel() + ", HP=" + hero.getMaxHP());
         }
     }
