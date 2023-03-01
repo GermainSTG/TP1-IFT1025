@@ -28,7 +28,6 @@ public class Main {
                     Double moneyCost = command.nextDouble();
                     Int armorCost = command.nextInt();
                     Double hp = command.nextInt();
-                    maGuilde.buyHero(name, level, moneyCost, armorCost, hp);
                 }
                 case "buy-armor" ->{
                     // TODO
@@ -41,6 +40,9 @@ public class Main {
                 }
             }
         }
+        
+        maGuilde.makeSummary();
+        maGuilde.makeErrors();
     }
 
 

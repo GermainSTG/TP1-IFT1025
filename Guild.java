@@ -1,10 +1,11 @@
 import Math;
+import java.util.ArrayList;
 package TP1-IFT1025.Hero;
 
 public class Guild {
 
-    private Hero[] heroes;  // à modifier si nécessaire, juste en attendant
-    private String[] errors;  // idem, utiliser Arrays?
+    private ArrayMist<Hero> heroes = new ArrayList<Hero>(); // à modifier si nécessaire, juste en attendant
+    private ArrayList<String> errors = new ArrayList<String>(); // idem, utiliser Arrays?
     private Bank bank;
 
     public Guild(double initialMoney, int initialArmor) {
@@ -31,10 +32,9 @@ public class Guild {
                     newHero = new Legendary(name, hitPoints);
                 }
             }
-            // TODO: ajouter newHero à heroes
+            heros.add(newHero);
         } else {
-            String error = "-Il vous manque de l'argent et/ou des armures pour acheter" + name +"\n";
-            // TODO: ajouter error à errors
+            errors.add("Il vous manque de l'argent et/ou des armures pour acheter " + name );
         }
     }
 
@@ -49,21 +49,16 @@ public class Guild {
                     bank.loseArmor(armorCost);
                     hero.upgrade();
                 } else {
-                    String error = "-Il vous manque de l'argent et/ou des armures pour améliorer" + name +"\n";
-                    // TODO: ajouter error à errors
+                    errors.add("Il vous manque de l'argent et/ou des armures pour améliorer " + name);
                 }
                 return;  // non vu que void?, à modifier pour que arrête là
             }
         }
-        String error = "-Le héros au nom de" + name + "n'apparêt pas dans la liste\n";
-        // TODO: ajouter error à errors
+        errors.add("Le héros au nom de " + name + " n'apparêt pas dans la liste");
     }
 
+
     public void doQuest(int level, double hpCost, int moneyReward, int armorReward) {
-        /*
-         * Il faudrait qu'on définisse le type de structure de donnée pour la
-         * liste de hero. On peut en parler Mercredi si t'es dispo.
-         */
 
         Quete quest = new Quete(level, hpCost);
 
@@ -71,23 +66,40 @@ public class Guild {
 
         switch (quest.completeQuest(hero)) {
             case true -> {
-                this.bank.gainArmor(armorReward);
-                this.bank.gainMoney(moneyReward);
+                bank.gainArmor(armorReward);
+                bank.gainMoney(moneyReward);
             }
             case false -> {
-                //heros.remove(hero)
+                heros.remove(hero);
             }
         }
 
     }
 
-    public void makeErrors(String [] errors) {
-        // TODO
+    public void buyArmor(int number, int price) {
+
+        if (bank.getMoney() >= double number * prive) {
+            bank.gainArmor(number);
+            bank.loseMoney(double number * price);
+        } else {
+            errors.add("Il vous manque de l'argent pour acheter " + number + " armure.s.");
+        }
+
     }
 
-    public void buyArmor(int number, int price) {
-        this.bank.gainArmor(number);
-        this.bank.loseMoney(double number * price);
+    public void makeSummary() {
+        System.out.println("Guild Bank account : " bank.getMoney() + " gold & " + bank.getArmor() + " armors.");
+        System.out.println("Hero.s. : ");
+        for (String hero : heros) {
+            System.out.println("-" + hero.getName() = ": level=" + hero.getLevel() + ", HP=" + hero.getMaxHP());
+        }
+    }
+
+    public void makeErrors() {
+        System.out.println("Erreur.s. : ");
+        for (String error : errors) {
+            System.out.println("- " + error);
+        }
     }
 
 }
