@@ -8,6 +8,7 @@ public abstract class Hero {
     public Hero(String name, double hitPoints) {
         this.name = name;
         this.hitPoints = hitPoints;
+        maxHP = this.hitPoints;
     }
 
     public void upgrade() {
