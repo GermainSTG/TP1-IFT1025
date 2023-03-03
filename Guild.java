@@ -62,7 +62,6 @@ public class Guild {
         if (hasSelectedHero) {
             Hero selectedHero = quest.getSelectedHero();
             Boolean succes = quest.completeQuest(selectedHero);
-            System.out.println(succes);
 
             if (succes) {
                 bank.gainArmor(armorReward);
