@@ -13,7 +13,7 @@ public class Guild {
     }
 
     public void buyHero(String name, int level, double moneyCost, int armorCost, double hitPoints) {
-        if (moneyCost <= bank.getMoney() & armorCost <= bank.getArmor()) {
+        if (bank.getMoney() >= moneyCost & bank.getArmor() >= armorCost) {
             Hero newHero = null;
             switch (level) {
                 case 0 -> {
@@ -41,7 +41,7 @@ public class Guild {
             if (hero.getName().equals(name)) {  // trouve le héros à upgrade
                 double c = Math.log(hero.getLevel() + 10);  // une constante revenant dans les calculs de prix
                 double moneyCost = 20 * c;
-                int armorCost = (int) Math.floor(c);
+                int armorCost = (int) Math.ceil(c);
                 if (bank.getMoney() >= moneyCost & bank.getArmor() >= armorCost) {
                     bank.loseMoney(moneyCost);
                     bank.loseArmor(armorCost);
