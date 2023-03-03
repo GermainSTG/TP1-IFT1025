@@ -1,6 +1,7 @@
 import Hero.*;
 import java.util.ArrayList;
 
+
 public class Guild {
 
     private ArrayList<Hero> heroes = new ArrayList<Hero>();
@@ -92,7 +93,7 @@ public class Guild {
     public void makeSummary() {
         System.out.println("Guild Bank account : " + bank.getMoney() + " gold & " + bank.getArmor() + " armors.");
 
-        System.out.println("Hero.es. : ");
+        System.out.println("Heroes : ");
         for (Hero hero : heroes) {
             System.out.println("-" + hero.getName() + ": level=" + hero.getLevel() + ", HP=" + hero.getHitPoints());
         }

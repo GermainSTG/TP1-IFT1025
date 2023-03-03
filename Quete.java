@@ -1,4 +1,4 @@
-import java.util.Collections;
+
 import java.util.ArrayList;
 import java.util.*;
 import Hero.*;
@@ -18,7 +18,6 @@ public class Quete {
     public boolean selectHero(ArrayList<Hero> heroes) {
 
         Collections.sort(heroes, new LevelSort());
-
         for (Hero hero : heroes) {
             if (hero.getLevel() >= this.level) {
                 this.selectedHero = hero;
