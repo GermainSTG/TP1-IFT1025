@@ -18,7 +18,6 @@ public class Quete {
 
         Collections.sort(heroes, new LevelSort());
 
-        Hero selectedHero;
         for (Hero hero : heroes) {
             if (hero.getLevel() >= this.level) {
                 this.selectedHero = hero;
