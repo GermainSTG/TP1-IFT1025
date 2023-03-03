@@ -92,16 +92,18 @@ public class Guild {
 
         System.out.println("Hero.s. : ");
         for (Hero hero : heroes) {
-            System.out.println("-" + hero.getName() + ": level=" + hero.getLevel() + ", HP=" + hero.getMaxHP());
+            System.out.println("-" + hero.getName() + ": level=" + hero.getLevel() + ", HP=" + hero.getHitPoints());
         }
 
     }
 
     public void makeErrors() {
 
-        System.out.println("Erreur.s. : ");
-        for (String error : errors) {
-            System.out.println("- " + error);
+        if (errors.size() > 0) {
+            System.out.println("Erreur.s. : ");
+            for (String error : errors) {
+                System.out.println("- " + error);
+            }
         }
 
     }
