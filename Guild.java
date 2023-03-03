@@ -58,15 +58,13 @@ public class Guild {
         Quete quest = new Quete(level, hpCost);
 
         Hero hero = quest.selectHero(heroes);
+        Boolean succes = quest.completeQuest(hero);
 
-        switch (quest.completeQuest(hero)) {
-            case true -> {
-                bank.gainArmor(armorReward);
-                bank.gainMoney(moneyReward);
-            }
-            case false -> {
-                heroes.remove(hero);
-            }
+        if (succes) {
+            bank.gainArmor(armorReward);
+            bank.gainMoney(moneyReward);
+        } else {
+            heroes.remove(hero);
         }
 
     }
@@ -84,17 +82,21 @@ public class Guild {
 
     public void makeSummary() {
         System.out.println("Guild Bank account : " + bank.getMoney() + " gold & " + bank.getArmor() + " armors.");
+
         System.out.println("Hero.s. : ");
         for (Hero hero : heroes) {
             System.out.println("-" + hero.getName() + ": level=" + hero.getLevel() + ", HP=" + hero.getMaxHP());
         }
+
     }
 
     public void makeErrors() {
+
         System.out.println("Erreur.s. : ");
         for (String error : errors) {
             System.out.println("- " + error);
         }
+
     }
 
 }

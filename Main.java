@@ -31,10 +31,16 @@ public class Main {
                     maGuild.buyHero(name, level, moneyCost, armorCost, hitPoints);
                 }
                 case "buy-armor" ->{
-                    // TODO
+                    int number = command.nextInt();
+                    int price = command.nextInt();
+                    maGuild.buyArmor(number, price);
                 }
                 case "do-quest" -> {
-                    // TODO
+                    int level = command.nextInt();
+                    double hpCost = command.nextDouble();
+                    int moneyReward = command.nextInt();
+                    int armorReward = command.nextInt();
+                    maGuild.doQuest(level, hpCost, moneyReward, armorReward);
                 }
                 case "train-hero" -> {
                     String name = command.nextString();
