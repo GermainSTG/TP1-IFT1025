@@ -1,7 +1,6 @@
 import java.util.Collection;
 import java.util.ArrayList;
 import Hero.*;
-import Hero.Hero.*;
 
 public class Quete {
 

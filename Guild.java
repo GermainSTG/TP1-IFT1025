@@ -3,16 +3,16 @@ import java.util.ArrayList;
 
 public class Guild {
 
-    private ArrayList<Hero> heroes = new ArrayList<Hero>(); // à modifier si nécessaire, juste en attendant
-    private ArrayList<String> errors = new ArrayList<String>(); // idem, utiliser Arrays?
+    private ArrayList<Hero> heroes = new ArrayList<Hero>();
+    private ArrayList<String> errors = new ArrayList<String>();
     private Bank bank;
 
     public Guild(double initialMoney, int initialArmor) {
-        this.bank = new Bank(initialMoney, initialArmor);
+        bank = new Bank(initialMoney, initialArmor);
     }
 
     public void buyHero(String name, int level, double moneyCost, int armorCost, double hitPoints) {
-        if (moneyCost >= bank.getMoney() & armorCost >= bank.getArmor()) {
+        if (moneyCost <= bank.getMoney() & armorCost <= bank.getArmor()) {
             Hero newHero = null;
             switch (level) {
                 case 0 -> {
