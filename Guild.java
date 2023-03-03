@@ -57,19 +57,23 @@ public class Guild {
 
         Quete quest = new Quete(level, hpCost);
 
-        Hero hero = quest.selectHero(heroes);
-        if (hero != null) {
-            Boolean succes = quest.completeQuest(hero);
+        boolean hasSelectedHero = quest.selectHero(heroes);
+
+        if (hasSelectedHero) {
+            Hero selectedHero = quest.getSelectedHero();
+            Boolean succes = quest.completeQuest(selectedHero);
+            System.out.println(succes);
 
             if (succes) {
                 bank.gainArmor(armorReward);
                 bank.gainMoney(moneyReward);
             } else {
-                heroes.remove(hero);
+                heroes.remove(selectedHero);
             }
         } else {
             errors.add("Aucun héro ne correspond au niveau de la quête");
         }
+
 
     }
 
