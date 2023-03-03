@@ -10,14 +10,13 @@ public abstract class Hero {
     }
 
     public void upgrade() {
-        // doit initialiser nouvelle classe et retirer ancienne
-        level += 1;
         double oldMaxHP = maxHP;
         maxHP *= 1.5;
-        hitPoints += (maxHP - oldMaxHP);  // ajoute le même nb de HP à hitPoints que ajouté à maxHP
+        hitPoints += (maxHP - oldMaxHP);  // ajoute le même nb de HP à hitPoints que le nb ajouté à maxHP
     }
 
     public void loseHPFromQuest(double HPLoss, int levelQuest) {
+        // TODO: modifier en modifiant directement HPLoss au lieu?
         if (level > levelQuest) {
             double actualHPLoss = HPLoss - (level - levelQuest) * 1.5;
             loseHP(actualHPLoss);

@@ -1,10 +1,9 @@
-import Math;
+import Hero.*;
 import java.util.ArrayList;
-package TP1-IFT1025.Hero;
 
 public class Guild {
 
-    private ArrayMist<Hero> heroes = new ArrayList<Hero>(); // à modifier si nécessaire, juste en attendant
+    private ArrayList<Hero> heroes = new ArrayList<Hero>(); // à modifier si nécessaire, juste en attendant
     private ArrayList<String> errors = new ArrayList<String>(); // idem, utiliser Arrays?
     private Bank bank;
 
@@ -14,7 +13,7 @@ public class Guild {
 
     public void buyHero(String name, int level, double moneyCost, int armorCost, double hitPoints) {
         if (moneyCost >= bank.getMoney() & armorCost >= bank.getArmor()) {
-            Hero newHero;
+            Hero newHero = null;
             switch (level) {
                 case 0 -> {
                     newHero = new CommonHero(name, hitPoints);
@@ -28,9 +27,9 @@ public class Guild {
                     newHero = new LegendaryHero(name, hitPoints);
                 }
             }
-            heros.add(newHero);
+            heroes.add(newHero);
         } else {
-            errors.add("Il vous manque de l'argent et/ou des armures pour acheter " + name );
+            errors.add("Il vous manque de l'argent et/ou des armures pour acheter " + name);
         }
     }
 
@@ -50,7 +49,7 @@ public class Guild {
                 return;
             }
         }
-        errors.add("Le héros au nom de " + name + " n'apparêt pas dans la liste");
+        errors.add("Le héros au nom de " + name + " n'apparait pas dans la liste");
     }
 
 
@@ -66,7 +65,7 @@ public class Guild {
                 bank.gainMoney(moneyReward);
             }
             case false -> {
-                heros.remove(hero);
+                heroes.remove(hero);
             }
         }
 
@@ -74,9 +73,9 @@ public class Guild {
 
     public void buyArmor(int number, int price) {
 
-        if (bank.getMoney() >= double number * price) {
+        if (bank.getMoney() >= (double) number * price) {
             bank.gainArmor(number);
-            bank.loseMoney(double number * price);
+            bank.loseMoney((double) number * price);
         } else {
             errors.add("Il vous manque de l'argent pour acheter " + number + " armure.s.");
         }
@@ -84,10 +83,10 @@ public class Guild {
     }
 
     public void makeSummary() {
-        System.out.println("Guild Bank account : " bank.getMoney() + " gold & " + bank.getArmor() + " armors.");
+        System.out.println("Guild Bank account : " + bank.getMoney() + " gold & " + bank.getArmor() + " armors.");
         System.out.println("Hero.s. : ");
-        for (Hero hero : heros) {
-            System.out.println("-" + hero.getName() = ": level=" + hero.getLevel() + ", HP=" + hero.getMaxHP());
+        for (Hero hero : heroes) {
+            System.out.println("-" + hero.getName() + ": level=" + hero.getLevel() + ", HP=" + hero.getMaxHP());
         }
     }
 

@@ -43,8 +43,8 @@ public class Main {
             }
         }
         
-        maGuilde.makeSummary();
-        maGuilde.makeErrors();
+        maGuild.makeSummary();
+        maGuild.makeErrors();
     }
 
 
