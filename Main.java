@@ -27,7 +27,7 @@ public class Main {
                     int level = command.nextInt();
                     double moneyCost = command.nextDouble();
                     int armorCost = command.nextInt();
-                    double hitPoints = command.nextInt();
+                    double hitPoints = command.nextDouble();
                     maGuild.buyHero(name, level, moneyCost, armorCost, hitPoints);
                 }
                 case "buy-armor" ->{

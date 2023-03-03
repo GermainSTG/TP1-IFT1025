@@ -58,13 +58,17 @@ public class Guild {
         Quete quest = new Quete(level, hpCost);
 
         Hero hero = quest.selectHero(heroes);
-        Boolean succes = quest.completeQuest(hero);
+        if (hero != null) {
+            Boolean succes = quest.completeQuest(hero);
 
-        if (succes) {
-            bank.gainArmor(armorReward);
-            bank.gainMoney(moneyReward);
+            if (succes) {
+                bank.gainArmor(armorReward);
+                bank.gainMoney(moneyReward);
+            } else {
+                heroes.remove(hero);
+            }
         } else {
-            heroes.remove(hero);
+            errors.add("Aucun héro ne correspond au niveau de la quête");
         }
 
     }
@@ -75,7 +79,7 @@ public class Guild {
             bank.gainArmor(number);
             bank.loseMoney((double) number * price);
         } else {
-            errors.add("Il vous manque de l'argent pour acheter " + number + " armure.s.");
+            errors.add("Il vous manque de l'argent pour acheter " + number + " armure.s à " + price + "$.");
         }
 
     }

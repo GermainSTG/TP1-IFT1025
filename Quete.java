@@ -1,6 +1,8 @@
-import java.util.Collection;
 import java.util.ArrayList;
+import java.util.*;
+
 import Hero.*;
+
 
 public class Quete {
 
@@ -12,25 +14,24 @@ public class Quete {
         this.hpCost = hpCost;
     }
 
-    public Hero selectHero(ArrayList<Hero> heros) {
-        Collection.sort(heros, Hero.ComparatorLevel);
-        for (Hero hero : heros) {
+    public Hero selectHero(ArrayList<Hero> heroes) {
+
+        Collections.sort(heroes, new LevelSort());
+        Hero selectedHero;
+
+        for (Hero hero : heroes) {
             if (hero.getLevel() >= this.level) {
                 return hero;
             }
         }
+
+        return null;
     }
 
     public Boolean completeQuest(Hero hero) {
 
-        // Pour calculer les points de vie du héros, on fait: maxHP*1.5 de plus, ça
-        // permet au héros de regagner des ponts de vie.
+        hero.loseHPFromQuest(hpCost, level);
 
-        if (hero.getLevel() != this.level) {
-            hero.loseHP(this.hpCost - (hero.getLevel() - this.level) * 1.5);
-        } else {
-            hero.loseHP(this.hpCost);
-        }
         if (hero.isAlive()) {
             return true;
         }

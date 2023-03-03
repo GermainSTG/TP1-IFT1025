@@ -1,7 +1,5 @@
 package Hero;
 
-import java.util.Comparator;
-
 public abstract class Hero {
     protected String name;
     protected int level;
@@ -56,11 +54,4 @@ public abstract class Hero {
         return name;
     }
 
-    public static Comparator<Hero> ComparatorLevel = new Comparator<Hero>() {
-        @Override
-        public int compare(Hero e1, Hero e2) {
-            return (int) (e1.getLevel() - e2.getLevel());
-        }
-    };
-    
 }
