@@ -28,6 +28,8 @@ public class Guild {
                 }
             }
             heroes.add(newHero);
+            bank.loseMoney(moneyCost);
+            bank.loseArmor(armorCost);
         } else {
             errors.add("Il vous manque de l'argent et/ou des armures pour acheter " + name);
         }
@@ -61,9 +63,9 @@ public class Guild {
 
         if (hasSelectedHero) {
             Hero selectedHero = quest.getSelectedHero();
-            Boolean succes = quest.completeQuest(selectedHero);
+            Boolean success = quest.completeQuest(selectedHero);
 
-            if (succes) {
+            if (success) {
                 bank.gainArmor(armorReward);
                 bank.gainMoney(moneyReward);
             } else {
@@ -77,10 +79,10 @@ public class Guild {
     }
 
     public void buyArmor(int number, int price) {
-
-        if (bank.getMoney() >= (double) number * price) {
+        double totalPrice = (double) number * price;
+        if (bank.getMoney() >= totalPrice) {
             bank.gainArmor(number);
-            bank.loseMoney((double) number * price);
+            bank.loseMoney(totalPrice);
         } else {
             errors.add("Il vous manque de l'argent pour acheter " + number + " armure.s à " + price + "$.");
         }
@@ -90,7 +92,7 @@ public class Guild {
     public void makeSummary() {
         System.out.println("Guild Bank account : " + bank.getMoney() + " gold & " + bank.getArmor() + " armors.");
 
-        System.out.println("Hero.s. : ");
+        System.out.println("Hero.es. : ");
         for (Hero hero : heroes) {
             System.out.println("-" + hero.getName() + ": level=" + hero.getLevel() + ", HP=" + hero.getHitPoints());
         }
