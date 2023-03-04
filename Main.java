@@ -54,7 +54,7 @@ public class Main {
         for (String arg : args) {
             System.out.print(arg + " ");
         }
-        
+
         System.out.println("\n");
         System.out.println("Output : \n");
 
