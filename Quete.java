@@ -16,24 +16,29 @@ public class Quete {
 
     public boolean selectHero(ArrayList<Hero> heroes) {
         /*
-         * Triage de la liste en ordre croissant avec le comparateur
-         * que nous avons créé dans la class LevelSort() afin de trier les
-         * heroes par level.
+         * Recherche du hero le plus proche du niveau de la quête.
          */
-        Collections.sort(heroes, new LevelSort());
-
-        Hero awaiting = heroes.get(0);
-        int dist = 10;
 
         if (!heroes.isEmpty()) {
 
+            // Tri par ordre croissant en fonction du level.
+            Collections.sort(heroes, new LevelSort());
+
+            Hero awaiting = heroes.get(0);
+            int dist = 10;
+
             for (Hero hero : heroes) {
                 int currentDist = Math.abs(this.level - hero.getLevel());
+
                 if (currentDist < dist) {
                     dist = currentDist;
                     awaiting = hero;
                 }
                 if (currentDist > dist) {
+                    /*
+                     * Comme la liste de heroes est triée par ordre croissant on peut arreter les
+                     * recherches.
+                     */
                     break;
                 }
             }
