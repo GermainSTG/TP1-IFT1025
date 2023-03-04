@@ -1,9 +1,7 @@
 - commentaires avant chaque fonction/procédure?
     -> De ce dont je me souviens il avait dis que ce n'étais pas essentiel: seulement si la fonction est "complexe'...
 - loseHPFromQuest(HPLoss, levelQuest) --> HPLoss bon nom?
-- HP dans paramètres en majuscule? ou hitPoints mieux?
 - longueur des lignes?
-- Int et Double en majuscule dans main?
 - Changer nom du fichier Hero en miniscule?
 - Écrire OUTPUT et INPUT comme dans exemple?
 - sort heroes seulement lorsque modifie liste (buy-hero, train-hero, meurt en quête) et non à chaque fois qu'on la regarde
