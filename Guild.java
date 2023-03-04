@@ -14,23 +14,16 @@ public class Guild {
 
     public void buyHero(String name, int level, double moneyCost, int armorCost, double hitPoints) {
         if (bank.getMoney() >= moneyCost & bank.getArmor() >= armorCost) {
-            Hero newHero = null;
-            switch (level) {
-                case 0:
-                    newHero = new CommonHero(name, hitPoints);
-                case 1:
-                    newHero = new UncommonHero(name, hitPoints);
-                case 2:
-                    newHero = new RareHero(name, hitPoints);
-                case 3:
-                    newHero = new EpicHero(name, hitPoints);
-                case 4:
-                    newHero = new LegendaryHero(name, hitPoints);
+            Hero newHero = Hero.findHeroType(level, name, hitPoints);
 
+            if (newHero == null) {
+                errors.add("Le niveau donné pour " + name + " n'existe pas.");
+            } else {
+                heroes.add(newHero);
+                bank.loseMoney(moneyCost);
+                bank.loseArmor(armorCost);
             }
-            heroes.add(newHero);
-            bank.loseMoney(moneyCost);
-            bank.loseArmor(armorCost);
+
         } else {
             errors.add("Il vous manque de l'argent et/ou des armures pour acheter " + name);
         }
@@ -39,29 +32,24 @@ public class Guild {
     public void trainHero(String name) {
         for (Hero hero : heroes) {
             if (hero.getName().equals(name)) {  // trouve le héros à upgrade
+
                 double c = Math.log(hero.getLevel() + 10);  // une constante revenant dans les calculs de prix
                 double moneyCost = 20 * c;
                 int armorCost = (int) Math.ceil(c);
-                if (bank.getMoney() >= moneyCost & bank.getArmor() >= armorCost) {
-                    bank.loseMoney(moneyCost);
-                    bank.loseArmor(armorCost);
-                    hero.upgrade();
-                    Hero upgradedHero = null;
-                    switch (hero.getLevel()) {
-                        case 0:
-                            upgradedHero = new UncommonHero(hero.getName(), hero.getHitPoints());
-                        case 1:
-                            upgradedHero = new RareHero(hero.getName(), hero.getHitPoints());
-                        case 2:
-                            upgradedHero = new EpicHero(hero.getName(), hero.getHitPoints());
-                        case 3:
-                            upgradedHero = new LegendaryHero(hero.getName(), hero.getHitPoints());
-                        case 4:
-                            errors.add(hero.getName() + " est déjà amélioré au maximum.");
 
+                if (bank.getMoney() >= moneyCost & bank.getArmor() >= armorCost) {
+                    Hero upgradedHero = Hero.findHeroType(hero.getLevel() + 1, name, hero.getMaxHP());
+
+                    if (upgradedHero == null) {
+                        errors.add(hero.getName() + " est déjà amélioré au maximum.");
+                    } else {
+                        bank.loseMoney(moneyCost);
+                        bank.loseArmor(armorCost);
+                        upgradedHero.upgrade();
+                        heroes.remove(hero);
+                        heroes.add(upgradedHero);
                     }
-                    heroes.remove(hero);
-                    heroes.add(upgradedHero);
+
                 } else {
                     errors.add("Il vous manque de l'argent et/ou des armures pour améliorer " + name);
                 }

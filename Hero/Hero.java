@@ -13,7 +13,7 @@ public abstract class Hero {
 
     public void upgrade() {
         maxHP *= 1.5;
-        hitPoints = maxHP;
+        hitPoints = maxHP;  // non nécessaire
     }
 
     public void loseHPFromQuest(double HPLoss, int levelQuest) {
@@ -24,6 +24,18 @@ public abstract class Hero {
         } else {
             loseHP(HPLoss);
         }
+    }
+
+    public  static Hero findHeroType(int level, String name, double hitPoints) {
+        Hero newHero = null;
+        switch (level) {
+            case 0 -> newHero = new CommonHero(name, hitPoints);
+            case 1 -> newHero = new UncommonHero(name, hitPoints);
+            case 2 -> newHero = new RareHero(name, hitPoints);
+            case 3 -> newHero = new EpicHero(name, hitPoints);
+            case 4 -> newHero = new LegendaryHero(name, hitPoints);
+        }
+        return newHero;
     }
 
     public void addHP(double hitPoints) {
