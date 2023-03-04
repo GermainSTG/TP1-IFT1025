@@ -1,5 +1,6 @@
-import Hero.*;
 import java.util.ArrayList;
+
+import hero.*;
 
 
 public class Guild {

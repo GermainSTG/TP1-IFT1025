@@ -1,4 +1,4 @@
-package Hero;
+package hero;
 
 public abstract class Hero {
     protected String name;

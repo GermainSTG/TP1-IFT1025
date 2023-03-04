@@ -1,7 +1,9 @@
 
 import java.util.ArrayList;
+
+import hero.*;
+
 import java.util.*;
-import Hero.*;
 
 
 public class Quete {

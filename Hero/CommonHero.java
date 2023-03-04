@@ -1,4 +1,4 @@
-package Hero;
+package hero;
 public class CommonHero extends Hero {
     public CommonHero(String name, double hitPoints) {
         super(name, hitPoints);
