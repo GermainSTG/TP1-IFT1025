@@ -25,7 +25,7 @@ public class Guild {
                 bank.loseMoney(moneyCost);
                 bank.loseArmor(armorCost);
             } else {
-                errors.add("Le niveau donné pour " + name + " n'existe pas.");
+                errors.add("Le niveau donné pour " + name + " n'existe pas");
             }
 
         } else {
@@ -55,7 +55,7 @@ public class Guild {
                         heroes.remove(hero);
                         heroes.add(upgradedHero);
                     } else {
-                        errors.add(hero.getName() + " est déjà amélioré au maximum.");
+                        errors.add(hero.getName() + " est déjà amélioré au maximum");
                     }
 
                 } else {
@@ -100,7 +100,7 @@ public class Guild {
             bank.gainArmor(number);
             bank.loseMoney(totalPrice);
         } else {
-            errors.add("Il vous manque de l'argent pour acheter " + number + " armure.s à " + price + "$.");
+            errors.add("Il vous manque de l'argent pour acheter " + number + " armure.s à " + price + "$");
         }
     }
 
@@ -127,7 +127,7 @@ public class Guild {
         if (!errors.isEmpty()) {
             System.out.println("Erreur.s. : ");
             for (String error : errors) {
-                System.out.println("- " + error);
+                System.out.println("- " + error + ".");
             }
         }
     }

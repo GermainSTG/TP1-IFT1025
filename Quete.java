@@ -22,16 +22,25 @@ public class Quete {
          */
         Collections.sort(heroes, new LevelSort());
 
-        for (Hero hero : heroes) {
-            /*
-             * Si un hero à le niveau de la quête on l'envoi en prioritée
-             * sinon on prend ceux dont le niveau est supérieur.
-             */
-            if (hero.getLevel() >= this.level) {
-                this.selectedHero = hero;
-                return true;
+        Hero awaiting = heroes.get(0);
+        int dist = 10;
+
+        if (!heroes.isEmpty()) {
+
+            for (Hero hero : heroes) {
+                int currentDist = Math.abs(this.level - hero.getLevel());
+                if (currentDist < dist) {
+                    dist = currentDist;
+                    awaiting = hero;
+                }
+                if (currentDist > dist) {
+                    break;
+                }
             }
+            this.selectedHero = awaiting;
+            return true;
         }
+
         return false;
     }
 
