@@ -1,8 +1,5 @@
-
 import java.util.ArrayList;
-
 import heroes.*;
-
 import java.util.*;
 
 
@@ -16,12 +13,6 @@ public class Quete {
         this.level = level;
         this.hpCost = hpCost;
     }
-
-    /*
-     * La methode selectHero permet de selectionnner le hero à envoyer en quête
-     * parmis
-     * ceux de la liste.
-     */
 
     public boolean selectHero(ArrayList<Hero> heroes) {
         /*
@@ -41,18 +32,12 @@ public class Quete {
                 return true;
             }
         }
-
         return false;
     }
 
     public Hero getSelectedHero() {
         return selectedHero;
     }
-
-    /*
-     * La méthide completeQuest() retourne true ou false si le hero
-     * a réussi la quête
-     */
 
     public Boolean completeQuest(Hero hero) {
 

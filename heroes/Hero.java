@@ -1,6 +1,7 @@
 package heroes;
 
 public abstract class Hero {
+
     protected String name;
     protected int level;
     protected double hitPoints, maxHP;
@@ -8,16 +9,19 @@ public abstract class Hero {
     public Hero(String name, double hitPoints) {
         this.name = name;
         this.hitPoints = hitPoints;
-        maxHP = this.hitPoints;
+        this.maxHP = this.hitPoints;
     }
 
     public void upgrade() {
         maxHP *= 1.5;
-        hitPoints = maxHP;  // non nécessaire
+        hitPoints = maxHP;
     }
 
     public void loseHPFromQuest(double HPLoss, int levelQuest) {
-        // TODO: modifier en modifiant directement HPLoss au lieu?
+        /*
+         * La perte de HP est moindre si le level du hero est plus grand que celui de la
+         * quête.
+         */
         if (level > levelQuest) {
             double actualHPLoss = HPLoss - (level - levelQuest) * 1.5;
             loseHP(actualHPLoss);
@@ -26,7 +30,12 @@ public abstract class Hero {
         }
     }
 
-    public  static Hero findHeroType(int level, String name, double hitPoints) {
+    public static Hero findHeroType(int level, String name, double hitPoints) {
+        /*
+         * Retourne le bon hero initialisé selon le level en paramètre
+         * sinon si le level ne correspond pas à un level de hero on
+         * retourn null.
+         */
         Hero newHero = null;
         switch (level) {
             case 0 -> newHero = new CommonHero(name, hitPoints);
@@ -38,16 +47,12 @@ public abstract class Hero {
         return newHero;
     }
 
-    public void addHP(double hitPoints) {
-        this.hitPoints += hitPoints;
-    }
-
     public void loseHP(double hitPoints) {
         this.hitPoints -= hitPoints;
     }
 
     public boolean isAlive() {
-        return hitPoints >= 0;
+        return hitPoints > 0;
     }
 
     public int getLevel() {
