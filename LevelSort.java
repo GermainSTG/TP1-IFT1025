@@ -1,6 +1,6 @@
 import java.util.Comparator;
 
-import hero.*;
+import heros.*;
 
 /* La classe LevelSort implemente la class comparator et créée la methode 
  compare qui permettra de trier une liste de heroes dans l'ordre croissant 
