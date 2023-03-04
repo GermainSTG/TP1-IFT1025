@@ -78,8 +78,9 @@ public class Guild {
         boolean hasSelectedHero = quest.selectHero(heroes);
 
         if (hasSelectedHero) {
+
             Hero selectedHero = quest.getSelectedHero();
-            Boolean success = quest.completeQuest();
+            Boolean success = quest.completeQuest(selectedHero);
 
             if (success) {
                 bank.gainArmor(armorReward);
@@ -87,6 +88,7 @@ public class Guild {
             } else {
                 heroes.remove(selectedHero);
             }
+
         } else {
             errors.add("Aucun héro ne correspond au niveau de la quête");
         }

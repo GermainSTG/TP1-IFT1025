@@ -52,11 +52,11 @@ public class Quete {
      * a réussi la quête
      */
 
-    public Boolean completeQuest() {
+    public Boolean completeQuest(Hero hero) {
 
-        this.selectedHero.loseHPFromQuest(hpCost, level);
+        hero.loseHPFromQuest(hpCost, level);
 
-        if (this.selectedHero.isAlive()) {
+        if (hero.isAlive()) {
             return true;
         }
 
