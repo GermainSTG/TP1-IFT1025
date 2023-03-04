@@ -5,6 +5,8 @@
 
 import guildcommands.*;
 
+import java.util.Arrays;
+
 public class Main {
     /**
      * Args: array with
@@ -48,17 +50,7 @@ public class Main {
                 }
             }
         }
-
-        System.out.println("Input : \n");
-
-        for (String arg : args) {
-            System.out.print(arg + " ");
-        }
-
-        System.out.println("\n");
-        System.out.println("Output : \n");
-
-        maGuild.makeSummary();
+        printSummary(args, maGuild);
     }
 
 
@@ -66,5 +58,17 @@ public class Main {
         double montantInitial = command.nextDouble();
         int nbArmures = command.nextInt();
         return new Guild(montantInitial, nbArmures);
+    }
+
+    private static void printSummary(String[] args, Guild maGuild) {
+
+        System.out.println("Input : \n");
+        for (String arg : args) {
+            System.out.print(arg + " ");
+        }
+
+        System.out.println("\n\n");
+        System.out.println("Output : \n");
+        maGuild.makeSummary();
     }
 }
