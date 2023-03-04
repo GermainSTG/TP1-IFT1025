@@ -3,6 +3,7 @@ public class Bank {
     private double money;
     private int armor;
 
+
     public Bank(double initialMoney, int initialArmor) {
         this.money = initialMoney;
         this.armor = initialArmor;

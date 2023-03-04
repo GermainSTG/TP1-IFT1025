@@ -92,16 +92,21 @@ public class Guild {
         }
     }
 
+    private double roundToTenth(double number) {
+        return (Math.round(number * 10.0) / 10.0);
+    }
 
     public void makeSummary() {
         // Display des status de la bank.
-        System.out.println("Guild Bank account : " + bank.getMoney() + " gold & " + bank.getArmor() + " armors.");
+        System.out.println(
+                "Guild Bank account : " + roundToTenth(bank.getMoney()) + " gold & " + bank.getArmor() + " armors.");
 
         // Display des heroes après le jeu.
         if (!heroes.isEmpty()) {
             System.out.println("Heroes : ");
             for (Hero hero : heroes) {
-                System.out.println("-" + hero.getName() + ": level=" + hero.getLevel() + ", HP=" + hero.getHitPoints());
+                System.out.println("-" + hero.getName() + ": level=" + hero.getLevel() + ", HP="
+                        + roundToTenth(hero.getHitPoints()));
             }
         }
 
