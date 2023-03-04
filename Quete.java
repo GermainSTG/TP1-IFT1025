@@ -1,7 +1,7 @@
 
 import java.util.ArrayList;
 
-import hero.*;
+import heros.*;
 
 import java.util.*;
 
