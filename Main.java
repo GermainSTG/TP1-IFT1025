@@ -48,7 +48,16 @@ public class Main {
                 }
             }
         }
+
+        System.out.println("Input : \n");
+
+        for (String arg : args) {
+            System.out.print(arg + " ");
+        }
         
+        System.out.println("\n");
+        System.out.println("Output : \n");
+
         maGuild.makeSummary();
     }
 
