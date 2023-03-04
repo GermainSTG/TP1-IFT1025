@@ -1,4 +1,1 @@
-- Changer nom du fichier Hero en miniscule?
-- Écrire OUTPUT et INPUT comme dans exemple?
-- sort heroes seulement lorsque modifie liste (buy-hero, train-hero, meurt en quête) et non à chaque fois qu'on la regarde
-- trainHero en fonctions séparées?
+
