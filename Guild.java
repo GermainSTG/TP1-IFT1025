@@ -46,6 +46,22 @@ public class Guild {
                     bank.loseMoney(moneyCost);
                     bank.loseArmor(armorCost);
                     hero.upgrade();
+                    Hero upgradedHero = null;
+                    switch (hero.getLevel()) {
+                        case 0 -> {
+                            upgradedHero = new UncommonHero(hero.getName(), hero.getHitPoints());
+                        } case 1 -> {
+                            upgradedHero = new RareHero(hero.getName(), hero.getHitPoints());
+                        } case 2 -> {
+                            upgradedHero = new EpicHero(hero.getName(), hero.getHitPoints());
+                        } case 3 -> {
+                            upgradedHero = new LegendaryHero(hero.getName(), hero.getHitPoints());
+                        } case 4 -> {
+                            errors.add(hero.getName() + " est déjà amélioré au maximum.");
+                        }
+                    }
+                    heroes.remove(hero);
+                    heroes.add(upgradedHero);
                 } else {
                     errors.add("Il vous manque de l'argent et/ou des armures pour améliorer " + name);
                 }
@@ -54,7 +70,6 @@ public class Guild {
         }
         errors.add("Le héros au nom de " + name + " n'apparait pas dans la liste");
     }
-
 
     public void doQuest(int level, double hpCost, int moneyReward, int armorReward) {
 
@@ -75,8 +90,6 @@ public class Guild {
         } else {
             errors.add("Aucun héro ne correspond au niveau de la quête");
         }
-
-
     }
 
     public void buyArmor(int number, int price) {
@@ -87,7 +100,6 @@ public class Guild {
         } else {
             errors.add("Il vous manque de l'argent pour acheter " + number + " armure.s à " + price + "$.");
         }
-
     }
 
     public void makeSummary() {
@@ -97,7 +109,6 @@ public class Guild {
         for (Hero hero : heroes) {
             System.out.println("-" + hero.getName() + ": level=" + hero.getLevel() + ", HP=" + hero.getHitPoints());
         }
-
     }
 
     public void makeErrors() {
@@ -108,7 +119,6 @@ public class Guild {
                 System.out.println("- " + error);
             }
         }
-
     }
 
 }
