@@ -1,4 +1,4 @@
-package hero;
+package heroes;
 public class LegendaryHero extends Hero {
     public LegendaryHero(String name, double hitPoints) {
         super(name, hitPoints);
