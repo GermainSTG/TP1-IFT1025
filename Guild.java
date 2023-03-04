@@ -16,17 +16,17 @@ public class Guild {
         if (bank.getMoney() >= moneyCost & bank.getArmor() >= armorCost) {
             Hero newHero = null;
             switch (level) {
-                case 0 -> {
+                case 0:
                     newHero = new CommonHero(name, hitPoints);
-                } case 1 -> {
+                case 1:
                     newHero = new UncommonHero(name, hitPoints);
-                } case 2 -> {
+                case 2:
                     newHero = new RareHero(name, hitPoints);
-                } case 3 -> {
+                case 3:
                     newHero = new EpicHero(name, hitPoints);
-                } case 4 -> {
+                case 4:
                     newHero = new LegendaryHero(name, hitPoints);
-                }
+
             }
             heroes.add(newHero);
             bank.loseMoney(moneyCost);
@@ -48,17 +48,17 @@ public class Guild {
                     hero.upgrade();
                     Hero upgradedHero = null;
                     switch (hero.getLevel()) {
-                        case 0 -> {
+                        case 0:
                             upgradedHero = new UncommonHero(hero.getName(), hero.getHitPoints());
-                        } case 1 -> {
+                        case 1:
                             upgradedHero = new RareHero(hero.getName(), hero.getHitPoints());
-                        } case 2 -> {
+                        case 2:
                             upgradedHero = new EpicHero(hero.getName(), hero.getHitPoints());
-                        } case 3 -> {
+                        case 3:
                             upgradedHero = new LegendaryHero(hero.getName(), hero.getHitPoints());
-                        } case 4 -> {
+                        case 4:
                             errors.add(hero.getName() + " est déjà amélioré au maximum.");
-                        }
+
                     }
                     heroes.remove(hero);
                     heroes.add(upgradedHero);
@@ -79,7 +79,7 @@ public class Guild {
 
         if (hasSelectedHero) {
             Hero selectedHero = quest.getSelectedHero();
-            Boolean success = quest.completeQuest(selectedHero);
+            Boolean success = quest.completeQuest();
 
             if (success) {
                 bank.gainArmor(armorReward);
@@ -102,18 +102,21 @@ public class Guild {
         }
     }
 
+
     public void makeSummary() {
+        // Display des status de la bank.
         System.out.println("Guild Bank account : " + bank.getMoney() + " gold & " + bank.getArmor() + " armors.");
 
-        System.out.println("Heroes : ");
-        for (Hero hero : heroes) {
-            System.out.println("-" + hero.getName() + ": level=" + hero.getLevel() + ", HP=" + hero.getHitPoints());
+        // Display des heroes après le jeu.
+        if (!heroes.isEmpty()) {
+            System.out.println("Heroes : ");
+            for (Hero hero : heroes) {
+                System.out.println("-" + hero.getName() + ": level=" + hero.getLevel() + ", HP=" + hero.getHitPoints());
+            }
         }
-    }
 
-    public void makeErrors() {
-
-        if (errors.size() > 0) {
+        // Display des erreurs rencontrées pendant le jeu.
+        if (!errors.isEmpty()) {
             System.out.println("Erreur.s. : ");
             for (String error : errors) {
                 System.out.println("- " + error);

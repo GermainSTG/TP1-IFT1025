@@ -50,7 +50,6 @@ public class Main {
         }
         
         maGuild.makeSummary();
-        maGuild.makeErrors();
     }
 
 
